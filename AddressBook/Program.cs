@@ -10,6 +10,8 @@ namespace AddressBook
             AddressBookManagement addressBook = new AddressBookManagement(); 
             addressBook.ToAddAddress();
             addressBook.Display();
+            addressBook.EditContact();
+            addressBook.Display();
         }
     }
 }

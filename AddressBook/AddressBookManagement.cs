@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 namespace AddressBook
 {
@@ -39,6 +40,62 @@ namespace AddressBook
                 Console.WriteLine("Email Id: " + item.Value.emailId);
                 Console.WriteLine("Phone Number: " + item.Value.phoneNumber);
                 Console.WriteLine("Pin Code: " + item.Value.pinCode);
+            }
+        }
+        public void EditContact()
+        {
+            Console.WriteLine("Enter first name to edit ");
+            string firstName = Console.ReadLine();
+            foreach (var item in addressBook)
+            {
+                if (firstName == item.Key)
+                {
+                    Console.WriteLine("Enter what to edit:");
+                    Console.WriteLine("1. First Name \n2. Last Name \n3. Address \n4. City \n5. State \n6. Email ID \n7. Phone Number \n8. Pin Code");
+                    int option = Convert.ToInt32(Console.ReadLine());
+                    switch (option)
+                    {
+                        case 1:
+                            Console.WriteLine("Enter First Name: ");
+                            item.Value.firstName = Console.ReadLine();
+                            break;
+                        case 2:
+                            Console.WriteLine("Enter Last Name: ");
+                            item.Value.lastName = Console.ReadLine();
+                            break;
+                        case 3:
+                            Console.WriteLine("Enter Address: ");
+                            item.Value.address = Console.ReadLine();
+                            break;
+                        case 4:
+                            Console.WriteLine("Enter City: ");
+                            item.Value.city = Console.ReadLine();
+                            break;
+                        case 5:
+                            Console.WriteLine("Enter State: ");
+                            item.Value.state = Console.ReadLine();
+                            break;
+                        case 6:
+                            Console.WriteLine("Enter Email ID: ");
+                            item.Value.emailId = Console.ReadLine();
+                            break;
+                        case 7:
+                            Console.WriteLine("Enter Phone Number: ");
+                            item.Value.phoneNumber = Convert.ToInt64(Console.ReadLine());
+                            break;
+                        case 8:
+                            Console.WriteLine("Enter Pin Code: ");
+                            item.Value.pinCode = Convert.ToInt64(Console.ReadLine());
+                            break;
+                        default:
+                            Console.WriteLine("Your enter wrong chice!");
+                            break;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Contact not of " + firstName + " is not found");
+                }
             }
         }
     }
