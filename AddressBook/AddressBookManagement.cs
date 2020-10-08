@@ -6,9 +6,25 @@ namespace AddressBook
     class AddressBookManagement
     {
         Dictionary<string, Contact> addressBook = new Dictionary<string, Contact>();
-        public void ToAddAddress(string firstName, string lastName, string address, string city, string state, string emailId, long phoneNumber, long pinCode)
+        public void ToAddAddress()
         {
-            Contact contact = new Contact( firstName,  lastName,  address,  city,  state,  emailId, phoneNumber, pinCode);
+            Contact contact = new Contact();
+            Console.Write("Enter First Name: ");
+            contact.firstName = Console.ReadLine();
+            Console.Write("Enter Last Name: ");
+            contact.lastName = Console.ReadLine();
+            Console.Write("Enter Address: ");
+            contact.address = Console.ReadLine();
+            Console.Write("Enter City: ");
+            contact.city = Console.ReadLine();
+            Console.Write("Enter State: ");
+            contact.state = Console.ReadLine();
+            Console.Write("Enter Email ID: ");
+            contact.emailId = Console.ReadLine();
+            Console.Write("Enter Phone Number: ");
+            contact.phoneNumber = Convert.ToInt64(Console.ReadLine());
+            Console.Write("Enter PinCode: ");
+            contact.pinCode = Convert.ToInt64(Console.ReadLine());
             addressBook.Add(contact.firstName, contact);
         }
         public void Display()

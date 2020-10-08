@@ -7,7 +7,7 @@ namespace AddressBook
     {
         public String firstName, lastName, address, city, state, emailId;
         public long phoneNumber, pinCode;
-        public Contact(string firstName, string lastName, string address, string city, string state, string emailId, long phoneNumber, long pinCode)
+        public void SaveContact(string firstName, string lastName, string address, string city, string state, string emailId, long phoneNumber, long pinCode)
         {
             this.firstName = firstName;
             this.lastName = lastName;
