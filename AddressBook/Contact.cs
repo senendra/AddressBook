@@ -18,5 +18,17 @@ namespace AddressBook
             this.phoneNumber = phoneNumber;
             this.pinCode = pinCode;
         }
+        public override bool Equals(object obj)
+        {
+            Contact contact = (Contact)obj;
+            if (contact == null)
+                return false;
+            else
+                return firstName.Equals(contact.firstName) && lastName.Equals(contact.lastName);
+        }
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(firstName, lastName);
+        }
     }
 }

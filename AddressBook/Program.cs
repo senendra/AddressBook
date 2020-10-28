@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Dynamic;
 namespace AddressBook
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Address Book Program");
             AddressBookManagement addressBook = new AddressBookManagement();
@@ -33,7 +33,30 @@ namespace AddressBook
                 switch (choice)
                 {
                     case "1":
-                        addressBook.ToAddAddress();
+                        Contact contact = new Contact();
+                        Console.Write("Enter First Name: ");
+                        string firstName = Console.ReadLine();
+                        Console.Write("Enter Last Name: ");
+                        string lastName = Console.ReadLine();
+                        Contact temp = new Contact();
+                        temp.SaveContact(firstName, lastName, null, null, null, null, 0, 0);
+                        if (addressBook.CheckDuplicateEntry(temp, bookName))
+                        {
+                            break;
+                        }
+                        Console.Write("Enter Address: ");
+                        string address = Console.ReadLine();
+                        Console.Write("Enter City: ");
+                        string city = Console.ReadLine();
+                        Console.Write("Enter State: ");
+                        string state = Console.ReadLine();
+                        Console.Write("Enter Email ID: ");
+                        string emailId = Console.ReadLine();
+                        Console.Write("Enter Phone Number: ");
+                        long phoneNumber = Convert.ToInt64(Console.ReadLine());
+                        Console.Write("Enter PinCode: ");
+                        long pinCode = Convert.ToInt64(Console.ReadLine());
+                        addressBook.AddContact(firstName,lastName,address,city,state,emailId,phoneNumber,pinCode,bookName);
                         break;
                     case "2":
                         addressBook.EditContact();

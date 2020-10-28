@@ -8,28 +8,14 @@ namespace AddressBook
     {
         Dictionary<string, Contact> addressBook = new Dictionary<string, Contact>();
         Dictionary<string, AddressBookManagement> addressBookDictionary = new Dictionary<string, AddressBookManagement>();
-        public void ToAddAddress()
+        public void AddContact(string firstName, string lastName, string address, string city, string state, string email, long phoneNumber,long pincode, string bookName)
         {
             Contact contact = new Contact();
-            Console.Write("Enter First Name: ");
-            contact.firstName = Console.ReadLine();
-            Console.Write("Enter Last Name: ");
-            contact.lastName = Console.ReadLine();
-            Console.Write("Enter Address: ");
-            contact.address = Console.ReadLine();
-            Console.Write("Enter City: ");
-            contact.city = Console.ReadLine();
-            Console.Write("Enter State: ");
-            contact.state = Console.ReadLine();
-            Console.Write("Enter Email ID: ");
-            contact.emailId = Console.ReadLine();
-            Console.Write("Enter Phone Number: ");
-            contact.phoneNumber = Convert.ToInt64(Console.ReadLine());
-            Console.Write("Enter PinCode: ");
-            contact.pinCode = Convert.ToInt64(Console.ReadLine());
-            addressBook.Add(contact.firstName, contact);
-            Console.WriteLine("Addition Completed\n");
+            contact.SaveContact(firstName, lastName, address, city, state, email, phoneNumber,pincode);
+            addressBookDictionary[bookName].addressBook.Add(contact.firstName, contact);
+            Console.WriteLine("\nAdded Succesfully. \n");
         }
+       
         public void DisplayAllContact()
         {
             foreach (KeyValuePair<string, Contact> item in addressBook)
@@ -143,6 +129,25 @@ namespace AddressBook
         public Dictionary<string, AddressBookManagement> GetAddressBook()
         {
             return addressBookDictionary;
+        }
+        public List<Contact> GetListOfDictctionaryKeys(string bookName)
+        {
+            List<Contact> book = new List<Contact>();
+            foreach (var value in addressBookDictionary[bookName].addressBook.Values)
+            {
+                book.Add(value);
+            }
+            return book;
+        }
+        public bool CheckDuplicateEntry(Contact c, string bookName)
+        {
+            List<Contact> book = GetListOfDictctionaryKeys(bookName);
+            if (book.Any(b => b.Equals(c)))
+            {
+                Console.WriteLine("Name already Exists.");
+                return true;
+            }
+            return false;
         }
     }
 }
