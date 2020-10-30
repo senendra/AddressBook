@@ -149,5 +149,36 @@ namespace AddressBook
             }
             return false;
         }
+        public List<Contact> GetListOfDictctionaryKeys2(Dictionary<string, Contact> d)
+        {
+            List<Contact> book = new List<Contact>();
+            foreach (var value in d.Values)
+            {
+                book.Add(value);
+            }
+            return book;
+        }
+        public void SearchPersonByCity(string city)
+        {
+            foreach (AddressBookManagement addressbookobj in addressBookDictionary.Values)
+            {
+                List<Contact> contactList = GetListOfDictctionaryKeys2(addressbookobj.addressBook);
+                foreach (Contact contact in contactList.FindAll(c => c.city.Equals(city)).ToList())
+                {
+                    Console.WriteLine(contact.ToString());
+                }
+            }
+        }
+        public void SearchPersonByState(string state)
+        {
+            foreach (AddressBookManagement addressbookobj in addressBookDictionary.Values)
+            {
+                List<Contact> contactList = GetListOfDictctionaryKeys2(addressbookobj.addressBook);
+                foreach (Contact contact in contactList.FindAll(c => c.state.Equals(state)).ToList())
+                {
+                    Console.WriteLine(contact.ToString());
+                }
+            }
+        }
     }
 }

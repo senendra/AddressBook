@@ -9,6 +9,7 @@ namespace AddressBook
         {
             Console.WriteLine("Welcome to Address Book Program");
             AddressBookManagement addressBook = new AddressBookManagement();
+            
             string choice;
             int choice2;
             string bookName = "default";
@@ -28,7 +29,7 @@ namespace AddressBook
             do
             {
                 Console.WriteLine($"Working on {bookName} AddressBook\n");
-                Console.WriteLine("Enter your Choice:\n1. Add New Contact \n2. Edit Exitisting Contact \n3. Delete A Contact \n4. View A Contact \n5.View All Contact \n6.Add New AddressBook \n7.Switch AddressBook \n8.Exit");
+                Console.WriteLine("Enter your Choice:\n1. Add New Contact \n2. Edit Exitisting Contact \n3. Delete A Contact \n4. View A Contact \n5.View All Contact \n6.Add New AddressBook \n7.Switch AddressBook \n8.Search Contact by city/state \n9.Exit");
                 choice = Console.ReadLine();
                 switch (choice)
                 {
@@ -102,15 +103,33 @@ namespace AddressBook
                         }
                         break;
                     case "8":
+                        Console.WriteLine("Would You Like To \n1.Search by city \n2.Search by state");
+                        int opt = Convert.ToInt32(Console.ReadLine());
+                        switch (opt)
+                        {
+                            case 1:
+                                Console.WriteLine("Enter name of city :");
+                                addressBook.SearchPersonByCity(Console.ReadLine());
+                                break;
+                            case 2:
+                                Console.WriteLine("Enter name of state :");
+                                addressBook.SearchPersonByState(Console.ReadLine());
+                                break;
+                            default:
+                                Console.WriteLine("Invalid Input.Enter 1 or 2");
+                                break;
+                        }
+                        break;
+                    case "9":
                         Console.WriteLine("Thank You For Using Address Book System.");
                         break;
 
                     default:
-                        Console.WriteLine("Entered Wrong invalid option/n");
+                        Console.WriteLine("Entered invalid option. Enter value between 1-9/n");
                         break;
                 }
             }
-            while (choice != "8");
+            while (choice != "9");
         }
     }
 }
