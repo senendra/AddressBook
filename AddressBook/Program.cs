@@ -29,7 +29,7 @@ namespace AddressBook
             do
             {
                 Console.WriteLine($"Working on {bookName} AddressBook\n");
-                Console.WriteLine("Enter your Choice:\n1. Add New Contact \n2. Edit Exitisting Contact \n3. Delete A Contact \n4. View A Contact \n5.View All Contact \n6.Add New AddressBook \n7.Switch AddressBook \n8.Search Contact by city/state \nn9.Count Persons COntact \n10.Sort Entry by name \n0.Exit");
+                Console.WriteLine("Enter your Choice:\n1. Add New Contact \n2. Edit Exitisting Contact \n3. Delete A Contact \n4. View A Contact \n5.View All Contact \n6.Add New AddressBook \n7.Switch AddressBook \n8.Search Contact by city/state \nn9.Count Persons COntact \n10.Sort Entry by name \n11.Print in text formate \n0.Exit");
                 choice = Console.ReadLine();
                 switch (choice)
                 {
@@ -144,6 +144,11 @@ namespace AddressBook
                                 Console.WriteLine("Invalid Choice");
                                 break;
                         }
+                        break;
+                    case "11":
+                        FileIOOperations fileIO = new FileIOOperations();
+                        fileIO.WriteToFile(addressBook.addressBookDictionary);
+                        fileIO.ReadFromFile();
                         break;
                     case "0":
                         Console.WriteLine("Thank You For Using Address Book System.");

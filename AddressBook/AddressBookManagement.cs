@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 namespace AddressBook
 {
-    class AddressBookManagement
+    public class AddressBookManagement
     {
-        Dictionary<string, Contact> addressBook = new Dictionary<string, Contact>();
-        Dictionary<string, AddressBookManagement> addressBookDictionary = new Dictionary<string, AddressBookManagement>();
-        Dictionary<Contact, string> cityDictionary = new Dictionary<Contact, string>();
-        Dictionary<Contact, string> stateDictionary = new Dictionary<Contact, string>();
+        public Dictionary<string, Contact> addressBook = new Dictionary<string, Contact>();
+        public Dictionary<string, AddressBookManagement> addressBookDictionary = new Dictionary<string, AddressBookManagement>();
+        private Dictionary<Contact, string> cityDictionary = new Dictionary<Contact, string>();
+        private Dictionary<Contact, string> stateDictionary = new Dictionary<Contact, string>();
         public void AddContact(string firstName, string lastName, string address, string city, string state, string email, long phoneNumber,long pincode, string bookName)
         {
             Contact contact = new Contact();

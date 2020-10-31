@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 namespace AddressBook
 {
-    class Contact
+    public class Contact
     {
         public String firstName, lastName, address, city, state, emailId;
         public long phoneNumber, pinCode;
