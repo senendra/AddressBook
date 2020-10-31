@@ -30,5 +30,9 @@ namespace AddressBook
         {
             return HashCode.Combine(firstName, lastName);
         }
+        public override string ToString()
+        {
+            return "First Name :" + firstName + "\nLast Name : " + lastName + "\nCity : " + city + "\nState : " + state + "\nEmail : " + emailId + "\nPhone Number : " + phoneNumber + "\n";
+        }
     }
 }
