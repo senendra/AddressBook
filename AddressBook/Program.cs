@@ -124,14 +124,33 @@ namespace AddressBook
                         addressBook.DisplayCountByCityandState();
                         break;
                     case "10":
-                        addressBook.SortByName();
+                        Console.WriteLine("\n1.Sort By Name \n2.Sort By City \n3.Sort By State \n4.Sort By Zip");
+                        int ch = Convert.ToInt32(Console.ReadLine());
+                        switch (ch)
+                        {
+                            case 1:
+                                addressBook.SortByName();
+                                break;
+                            case 2:
+                                addressBook.SortByCity();
+                                break;
+                            case 3:
+                                addressBook.SortByState();
+                                break;
+                            case 4:
+                                addressBook.SortByPin();
+                                break;
+                            default:
+                                Console.WriteLine("Invalid Choice");
+                                break;
+                        }
                         break;
                     case "0":
                         Console.WriteLine("Thank You For Using Address Book System.");
                         break;
 
                     default:
-                        Console.WriteLine("Entered invalid option. Enter value between 1-9/n");
+                        Console.WriteLine("Entered invalid option. Enter value between 0-10/n");
                         break;
                 }
             }

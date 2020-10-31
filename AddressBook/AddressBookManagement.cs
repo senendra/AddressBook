@@ -250,5 +250,56 @@ namespace AddressBook
                 }
             }
         }
+        public void SortByCity()
+        {
+            CreateCityDictionary();
+            Dictionary<string, Contact> inverseCityDictionary = new Dictionary<string, Contact>();
+            foreach (AddressBookManagement obj in addressBookDictionary.Values)
+            {
+                foreach (Contact contact in obj.cityDictionary.Keys)
+                {
+                    inverseCityDictionary.TryAdd(contact.city, contact);
+                }
+            }
+            List<string> list = inverseCityDictionary.Keys.ToList();
+            list.Sort();
+            foreach (string city in list)
+            {
+                Console.WriteLine(inverseCityDictionary[city].ToString());
+            }
+        }
+        public void SortByState()
+        {
+            CreateStateDictionary();
+            Dictionary<string, Contact> inverseStateDictionary = new Dictionary<string, Contact>();
+            foreach (AddressBookManagement obj in addressBookDictionary.Values)
+            {
+                foreach (Contact contact in obj.stateDictionary.Keys)
+                {
+                    inverseStateDictionary.TryAdd(contact.state, contact);
+                }
+            }
+            List<string> list = inverseStateDictionary.Keys.ToList();
+            list.Sort();
+            foreach (string state in list)
+            {
+                Console.WriteLine(inverseStateDictionary[state].ToString());
+            }
+        }
+        public void SortByPin()
+        {
+            SortedList<long, Contact> sortedbyCity = new SortedList<long, Contact>();
+            foreach (AddressBookManagement addressBookobj in addressBookDictionary.Values)
+            {
+                foreach (Contact contact in addressBookobj.addressBook.Values)
+                {
+                    sortedbyCity.TryAdd(contact.pinCode, contact);
+                }
+            }
+            foreach (var item in sortedbyCity)
+            {
+                Console.WriteLine(item.Value.ToString());
+            }
+        }
     }
 }
